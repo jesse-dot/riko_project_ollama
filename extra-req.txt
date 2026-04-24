@@ -1,4 +1,4 @@
 faster-whisper
 sounddevice
-openai
+ollama
 soundfile
