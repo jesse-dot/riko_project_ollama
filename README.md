@@ -1,11 +1,11 @@
 # Project Riko
 
-Project Riko is a anime focused LLM project by Just Rayen. She listens, and remembers your conversations. It combines OpenAI’s GPT, GPT-SoVITS voice synthesis, and Faster-Whisper ASR into a fully configurable conversational pipeline.
+Project Riko is a anime focused LLM project by Just Rayen. She listens, and remembers your conversations. It combines a local Ollama LLM, GPT-SoVITS voice synthesis, and Faster-Whisper ASR into a fully configurable conversational pipeline.
 
 **tested with python 3.10 Windows >10 and Linux Ubuntu**
 ## ✨ Features
 
-- 💬 **LLM-based dialogue** using OpenAI API (configurable system prompts)
+- 💬 **LLM-based dialogue** using a local Ollama server (configurable system prompts)
 - 🧠 **Conversation memory** to keep context during interactions
 - 🔊 **Voice generation** via GPT-SoVITS API
 - 🎧 **Speech recognition** using Faster-Whisper
@@ -18,9 +18,9 @@ Project Riko is a anime focused LLM project by Just Rayen. She listens, and reme
 All prompts and parameters are stored in `config.yaml`.
 
 ```yaml
-OPENAI_API_KEY: sk-YOURAPIKEY
+OLLAMA_BASE_URL: http://localhost:11434
 history_file: chat_history.json
-model: "gpt-4.1-mini"
+model: "gemma4"
 presets:
   default:
     system_prompt: |
@@ -37,6 +37,7 @@ sovits_ping_config:
 ````
 
 You can define personalities by modiying the config file.
+You can change the LLM by setting the `model` value to any Ollama model available on your machine.
 
 
 ## 🛠️ Setup
@@ -184,7 +185,7 @@ The flow:
 
 1. Riko listens to your voice via microphone (push to talk)
 2. Transcribes it with Faster-Whisper
-3. Passes it to GPT (with history)
+3. Passes it to Ollama (with history)
 4. Generates a response
 5. Synthesizes Riko's voice using GPT-SoVITS
 6. Plays the output back to you
@@ -206,11 +207,9 @@ For detailed WebSocket setup and integration, see [README_WEBSOCKET.md](README_W
 
 * Voice synthesis powered by [GPT-SoVITS](https://github.com/RVC-Boss/GPT-SoVITS)
 * ASR via [Faster-Whisper](https://github.com/SYSTRAN/faster-whisper)
-* Language model via [OpenAI GPT](https://platform.openai.com)
+* Language model via [Ollama](https://ollama.com)
 
 
 ## 📜 License
 
 MIT — feel free to clone, modify, and build your own waifu voice companion.
-
-
