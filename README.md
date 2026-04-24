@@ -20,7 +20,7 @@ All prompts and parameters are stored in `config.yaml`.
 ```yaml
 OLLAMA_BASE_URL: http://localhost:11434
 history_file: chat_history.json
-model: "llama3.1"
+model: "gemma4"
 presets:
   default:
     system_prompt: |
@@ -37,6 +37,7 @@ sovits_ping_config:
 ````
 
 You can define personalities by modiying the config file.
+You can change the LLM by setting the `model` value to any Ollama model available on your machine.
 
 
 ## 🛠️ Setup
@@ -212,4 +213,3 @@ For detailed WebSocket setup and integration, see [README_WEBSOCKET.md](README_W
 ## 📜 License
 
 MIT — feel free to clone, modify, and build your own waifu voice companion.
-

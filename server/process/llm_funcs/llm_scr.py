@@ -11,7 +11,7 @@ with open('character_config.yaml', 'r') as f:
 
 # Constants
 HISTORY_FILE = char_config['history_file']
-MODEL = char_config.get('model', 'llama3.1')
+MODEL = char_config.get('model', 'gemma4')
 OLLAMA_BASE_URL = char_config.get('OLLAMA_BASE_URL', 'http://localhost:11434').rstrip('/')
 SYSTEM_PROMPT_TEXT = char_config['presets']['default']['system_prompt']
 SYSTEM_PROMPT = [{"role": "system", "content": SYSTEM_PROMPT_TEXT}]
@@ -84,7 +84,7 @@ def get_riko_response_no_tool(messages):
     )
 
     try:
-        with request.urlopen(req, timeout=120) as response:
+        with request.urlopen(req, timeout=60) as response:
             response_data = json.loads(response.read().decode("utf-8"))
     except HTTPError as e:
         details = e.read().decode("utf-8", errors="ignore")
